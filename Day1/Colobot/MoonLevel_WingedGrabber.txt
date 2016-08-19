@@ -1,0 +1,42 @@
+extern void object::GoAndTake()
+{
+    //Winged Grabber - script to find Titanium ore and bring back to spaceship
+	object spaceShip = radar(SpaceShip);
+	point putIn = spaceShip.position;
+	bool success;
+	do
+	{
+		success = false;
+		if (this.energyCell.energyLevel < 0.5)
+		{
+			object power = radar(PowerCell, 0, 360, 0, 10000, -1);
+			point pos(power.position.x + 2, power.position.y, power.position.z);
+			
+			goto(pos);
+			SwitchPowerCell();
+		}
+		object ore = radar(TitaniumOre, 0, 360, 0, 100000, -1);
+		if (ore != null)
+		{
+			success = true;
+			goto(ore.position);
+			grab();
+			putIn.z += 10;
+			goto(putIn);
+			drop();
+		}
+	} while (success);
+}
+
+void object::SwitchPowerCell()
+{
+    //Script to switch powerchell
+	grab(InFront);     // take the new cell in front
+	drop(Behind);      // and drop it behind
+	
+	grab(EnergyCell);  // take the cell from the bot
+	drop(InFront);     // and drop it in front
+	
+	grab(Behind);      // take the new cell
+	drop(EnergyCell);  // and drop it on the bot
+}

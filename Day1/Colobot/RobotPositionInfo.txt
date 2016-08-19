@@ -1,0 +1,5 @@
+extern void object::Info()
+{
+    //Gets the current robot position and shows as message
+	message("Position: " + this.position);
+}

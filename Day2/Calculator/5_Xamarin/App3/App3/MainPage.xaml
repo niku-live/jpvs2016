@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App3.MainPage">	
+  <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+       <Label VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="0" Grid.Row="0" Text="Skaičius 1:" FontSize="32" />  
+       <Label VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="0" Grid.Row="1" Text="Skaičius 2:" FontSize="32" />  
+       <Label VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="0" Grid.Row="2" Text="Rezultatas" FontSize="32" />  
+ 
+       <Entry Grid.Column="1" Grid.Row="0" x:Name="textBox1"></Entry>
+       <Entry Grid.Column="1" Grid.Row="1" x:Name="textBox2"></Entry>
+       <Entry Grid.Column="1" Grid.Row="2" x:Name="textBox3"></Entry>
+  
+       <StackLayout Orientation="Horizontal" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2">
+          <Button Text="+" Clicked="Button1Click" FontSize="32" WidthRequest="50" HeightRequest="50"/>
+          <Button Text="-" Clicked="Button2Click" FontSize="32" WidthRequest="50" HeightRequest="50"/>
+          <Button Text="*" Clicked="Button3Click" FontSize="32" WidthRequest="50" HeightRequest="50"/>
+          <Button Text="/" Clicked="Button4Click" FontSize="32" WidthRequest="50" HeightRequest="50"/>
+       </StackLayout>
+  </Grid>
+</ContentPage>

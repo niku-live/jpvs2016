@@ -1,0 +1,85 @@
+extern void object::Init()
+{
+    //Script for Wheeled Grabber - bot helping astronaut to build WingedGrabber
+	object spaceShip = radar(SpaceShip);
+	//Find first titanium and put it outside the ship
+	object titanium1 = radar(Titanium);	
+	goto(titanium1.position);
+	grab();
+	point pos1(spaceShip.position.x + 40, spaceShip.position.y, spaceShip.position.z);
+	goto(pos1);
+	drop();
+	//Find second titanium and put it outside the ship (near first one)
+	object titanium2 = radar(Titanium, 0, 360, 30, 10000);
+	goto(titanium2.position);
+	grab();
+	point pos2(spaceShip.position.x + 40, spaceShip.position.y + 20, spaceShip.position.z);
+	goto(pos2);
+	drop();
+	goto(spaceShip.position);
+	//Wait until Research Center is build, then put energy cell in ResearchCenter
+	object lab = radar(ResearchCenter);
+	while (lab == null)
+	{
+		wait(5);
+		lab = radar(ResearchCenter);
+	}
+	object energy = radar(PowerCell, 0, 360, 0, 10000, -1);
+	goto(energy.position);
+	grab();
+	goto(lab.position);
+	drop();
+	
+	//Find titanium, wait for bot factory to be built, put titanium in bot factory
+	object titanium3 = radar(Titanium, 0, 360, 30, 10000);
+	goto(titanium3.position);
+	grab();
+		
+	object botFactory = radar(BotFactory);
+	while (botFactory == null)
+	{
+		wait(5);
+		botFactory = radar(BotFactory);
+	}
+	goto(botFactory.position);
+	drop();
+	goto(spaceShip.position);
+	
+	//Wait for Winged Grabber to be build, then but energy cell in Winged Grabber
+	object flyer = radar(WingedGrabber);
+	while (flyer == null)
+	{
+		wait(5);
+		flyer = radar(WingedGrabber);
+		
+	}
+	object energy2 = radar(PowerCell, 0, 360, 0, 10000, -1);
+	goto(energy2.position);
+	grab();
+	goto(flyer.position);
+	drop();
+	goto(spaceShip.position);
+	
+	//Move all other things out of spaceship
+	object energy3 = radar(PowerCell, 0, 360, 0, 10000, -1);
+	goto(energy3.position);
+	grab();
+	point pos3(spaceShip.position.x + 20, spaceShip.position.y + 20, spaceShip.position.z);
+	goto(pos3);
+	drop();
+	goto(spaceShip.position);
+	object energy4 = radar(PowerCell, 0, 360, 0, 10000, 1);
+	goto(energy4.position);
+	grab();
+	point pos4(spaceShip.position.x + 20, spaceShip.position.y + 25, spaceShip.position.z);
+	goto(pos4);
+	drop();
+	goto(spaceShip.position);
+	object titanium4 = radar(Titanium, 0, 360, 0, 10000, -1);
+	goto(titanium4.position);
+	grab();
+	point pos5(spaceShip.position.x + 20, spaceShip.position.y + 30, spaceShip.position.z);
+	goto(pos5);
+	drop();
+	goto(spaceShip.position);
+}
