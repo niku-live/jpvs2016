@@ -24,7 +24,7 @@ goto(spaceShip.position);
 drop();
 ```
 
-Pavyzdys, kaip patikrinti, ar už 10 metrų egzituoja objektas:
+Pavyzdys, kaip patikrinti, ar už 10 metrų egzistuoja objektas:
 ```cpp
 object ore = radar(TitaniumOre, 0, 360, 10, 10);
 if (ore != null)
